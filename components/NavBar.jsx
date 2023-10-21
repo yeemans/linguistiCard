@@ -97,42 +97,50 @@ const NavBar = () => {
               </Nav>
             )}
             {user && (
-              <Nav
-                id="nav-mobile"
-                className="d-md-none justify-content-between"
-                navbar
-                data-testid="navbar-menu-mobile">
-                <NavItem>
-                  <span className="user-info">
-                    <img
-                      src={user.picture}
-                      alt="Profile"
-                      className="nav-user-profile d-inline-block rounded-circle mr-3"
-                      width="50"
-                      height="50"
-                      decode="async"
-                      data-testid="navbar-picture-mobile"
-                    />
-                    <h6 className="d-inline-block" data-testid="navbar-user-mobile">
-                      {user.name}
-                    </h6>
-                  </span>
-                </NavItem>
-                <NavItem>
-                  <PageLink href="/profile" icon="user" testId="navbar-profile-mobile">
-                    Profile
-                  </PageLink>
-                </NavItem>
-                <NavItem id="qsLogoutBtn">
-                  <AnchorLink
-                    href="/api/auth/logout"
-                    className="btn btn-link p-0"
-                    icon="power-off"
-                    testId="navbar-logout-mobile">
-                    Log out
-                  </AnchorLink>
-                </NavItem>
-              </Nav>
+              <div>
+                <AnchorLink
+                  href="/flashcards/create"
+                  className="btn btn-primary btn-block">
+                  Create a Deck
+                </AnchorLink>
+
+                <Nav
+                  id="nav-mobile"
+                  className="d-md-none justify-content-between"
+                  navbar
+                  data-testid="navbar-menu-mobile">
+                  <NavItem>
+                    <span className="user-info">
+                      <img
+                        src={user.picture}
+                        alt="Profile"
+                        className="nav-user-profile d-inline-block rounded-circle mr-3"
+                        width="50"
+                        height="50"
+                        decode="async"
+                        data-testid="navbar-picture-mobile"
+                      />
+                      <h6 className="d-inline-block" data-testid="navbar-user-mobile">
+                        {user.name}
+                      </h6>
+                    </span>
+                  </NavItem>
+                  <NavItem>
+                    <PageLink href="/profile" icon="user" testId="navbar-profile-mobile">
+                      Profile
+                    </PageLink>
+                  </NavItem>
+                  <NavItem id="qsLogoutBtn">
+                    <AnchorLink
+                      href="/api/auth/logout"
+                      className="btn btn-link p-0"
+                      icon="power-off"
+                      testId="navbar-logout-mobile">
+                      Log out
+                    </AnchorLink>
+                  </NavItem>
+                </Nav>
+              </div>
             )}
           </Collapse>
         </Container>
