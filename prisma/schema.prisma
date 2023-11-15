@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model decks {
+  id          Int     @id @default(autoincrement())
+  user_id     String? @db.VarChar(255)
+  name        String? @db.VarChar(255)
+  front_topic String? @db.VarChar(255)
+  back_topic  String? @db.VarChar(255)
+}
+
+model flashcards {
+  id          Int      @id @default(autoincrement())
+  deck_id     Int?
+  name        String?  @db.VarChar(255)
+  front       String?  @db.VarChar(255)
+  frontislink Boolean?
+  back        String?  @db.VarChar(255)
+  backislink  Boolean?
+}
