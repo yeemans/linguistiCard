@@ -2,17 +2,17 @@
 import CreateDeck from "../../../components/deckForm/CreateDeck";
 import { useState } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { useRouter } from 'next/navigation'
 
 const Page = () => {
     const [name, setName] = useState("");
     const [front, setFront] = useState("");
     const [back, setBack] = useState("");
-    const { user, isLoading } = useUser();
+    const { user } = useUser();
+    const router = useRouter();
 
     async function submitForm() {
-        
         const formData = {"userId": user.sub, "name": name, "frontTopic": front, "backTopic": back}
-
         const response = await fetch(`http://localhost:3000/api/create-deck-instance`, {
             method: 'POST',
             headers: {
@@ -20,8 +20,12 @@ const Page = () => {
             },
             body: JSON.stringify(formData),
         });
-        const json = await response.json()
-        console.log(json);
+
+        const json = await response.json();
+        if (json["success"]) {
+            // redirect to view deck page
+            router.push(`http://localhost:3000/decks/view?id=${json["deckId"]}`);
+        }
     }
     return(
         <div>
