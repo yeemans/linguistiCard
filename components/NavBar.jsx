@@ -97,7 +97,7 @@ const NavBar = () => {
             {user && (
               <div>
                 <AnchorLink
-                  href="/flashcards/create"
+                  href="/decks/create"
                   className="btn btn-primary btn-block">
                   Create a Deck
                 </AnchorLink>

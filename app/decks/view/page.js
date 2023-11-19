@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Flashcard from "../../../components/flashcard/flashcard.js"
 
 const Page = () => {
     const [deckName, setDeckName] = useState("");
@@ -17,13 +18,17 @@ const Page = () => {
                 body: JSON.stringify({"deckId": +deckId}),
             });
             let json = await response.json();
-            if (!json["success"]) return;
+            assignDeckFields(json);
+        }
 
+        function assignDeckFields(json) {
+            if (!json["success"]) return;
             const deck = json["deck"];
             setDeckName(deck["name"]);
             setDeckFront(deck["front_topic"]);
             setDeckBack(deck["back_topic"]);
         }
+        
         getDeck();
     }, [])
     return(
@@ -31,6 +36,7 @@ const Page = () => {
             <h1>{deckName}</h1>
             <h1>{deckFront}</h1>
             <h1>{deckBack}</h1>
+            <Flashcard />
         </div>
     )
 }

@@ -16,11 +16,11 @@ model decks {
 }
 
 model flashcards {
-  id          Int      @id @default(autoincrement())
-  deck_id     Int?
-  name        String?  @db.VarChar(255)
-  front       String?  @db.VarChar(255)
-  frontislink Boolean?
-  back        String?  @db.VarChar(255)
-  backislink  Boolean?
+  id         Int     @id @default(autoincrement())
+  deck_id    Int?
+  name       String? @db.VarChar(255)
+  front      String? @db.VarChar(255)
+  back       String? @db.VarChar(255)
+  front_type String? @db.VarChar(255)
+  back_type  String? @db.VarChar(255)
 }
