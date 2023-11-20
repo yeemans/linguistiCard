@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import Flashcard from "../../../components/flashcard/flashcard.js"
+import Flashcard from "../../../components/flashcard/Flashcard.js"
+import AddFlashcard from "../../../components/flashcard/AddFlashcard.js"
 
 const Page = () => {
     const [deckName, setDeckName] = useState("");
@@ -36,7 +37,9 @@ const Page = () => {
             <h1>{deckName}</h1>
             <h1>{deckFront}</h1>
             <h1>{deckBack}</h1>
-            <Flashcard />
+            <Flashcard /> 
+            <AddFlashcard />
+            
         </div>
     )
 }
